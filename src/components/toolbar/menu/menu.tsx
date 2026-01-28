@@ -46,6 +46,8 @@ export function Menu() {
   const noSelected = useSoundStore(state => state.noSelected());
   const globalVolume = useSoundStore(state => state.globalVolume);
   const setGlobalVolume = useSoundStore(state => state.setGlobalVolume);
+  const alarmVolume = useSoundStore(state => state.alarmVolume);
+  const setAlarmVolume = useSoundStore(state => state.setAlarmVolume);
 
   const initial = useMemo(
     () => ({
@@ -146,7 +148,7 @@ export function Menu() {
                     <ShortcutsItem open={() => open('shortcuts')} />
                     <Divider />
 
-                    <div className={styles.globalVolume}>
+                    <div className={styles.volumeSetting}>
                       <label htmlFor="global-volume">Global Volume</label>
                       <Slider
                         max={100}
@@ -155,6 +157,16 @@ export function Menu() {
                         onChange={value => setGlobalVolume(value / 100)}
                       />
                     </div>
+
+                    <div className={styles.volumeSetting}>
+                      <label htmlFor="alarm-volume">Alarm Volume</label>
+                      <Slider
+                        max={100}
+                        min={0}
+                        value={alarmVolume * 100}
+                        onChange={value => setAlarmVolume(value / 100)}
+                      />
+                    </div>                    
 
                     <Divider />
                     <DonateItem />

@@ -20,6 +20,7 @@ export const useSoundStore = create<SoundState & SoundActions>()(
         ),
       name: 'moodist-sounds',
       partialize: state => ({
+        alarmVolume: state.alarmVolume,
         globalVolume: state.globalVolume,
         sounds: state.sounds,
       }),
