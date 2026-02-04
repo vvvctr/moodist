@@ -5,7 +5,6 @@ import type { SoundActions } from './sound.actions';
 import { sounds } from '@/data/sounds';
 
 export interface SoundState {
-  alarmVolume: number;
   getFavorites: () => Array<string>;
   globalVolume: number;
   history: {
@@ -34,7 +33,6 @@ export const createState: StateCreator<
   SoundState
 > = (set, get) => {
   const state: SoundState = {
-    alarmVolume: 1,
     getFavorites() {
       const { sounds } = get();
       const ids = Object.keys(sounds);
