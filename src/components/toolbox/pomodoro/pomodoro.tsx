@@ -10,7 +10,6 @@ import { Setting } from './setting';
 
 import { useLocalStorage } from '@/hooks/use-local-storage';
 import { useSoundEffect } from '@/hooks/use-sound-effect';
-import { useSoundStore } from '@/stores/sound';
 import { usePomodoroStore } from '@/stores/pomodoro';
 import { useCloseListener } from '@/hooks/use-close-listener';
 
@@ -33,8 +32,7 @@ export function Pomodoro({ onClose, open, show }: PomodoroProps) {
   const [timer, setTimer] = useState(0);
   const interval = useRef<ReturnType<typeof setInterval> | null>(null);
 
-  const alarmVolume = useSoundStore(state => state.alarmVolume);
-  const alarm = useSoundEffect('/sounds/alarm.mp3', alarmVolume);
+  const alarm = useSoundEffect('/sounds/alarm.mp3');
 
   const defaultTimes = useMemo(
     () => ({

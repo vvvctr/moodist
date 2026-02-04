@@ -3,7 +3,6 @@ import { useState, useEffect, useCallback } from 'react';
 import { Modal } from '@/components/modal';
 
 import { useSoundEffect } from '@/hooks/use-sound-effect';
-import { useSoundStore } from '@/stores/sound';
 import { cn } from '@/helpers/styles';
 import { padNumber } from '@/helpers/number';
 
@@ -23,8 +22,7 @@ export function Countdown({ onClose, show }: CountdownProps) {
   const [isActive, setIsActive] = useState(false);
   const [isFormVisible, setIsFormVisible] = useState(true);
 
-  const alarmVolume = useSoundStore(state => state.alarmVolume);
-  const alarm = useSoundEffect('/sounds/alarm.mp3', alarmVolume);
+  const alarm = useSoundEffect('/sounds/alarm.mp3');
 
   useEffect(() => {
     let timer: NodeJS.Timeout;
